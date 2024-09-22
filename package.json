@@ -1,0 +1,15 @@
+{
+  "name": "cypressprojectaero",
+  "version": "1.0.0",
+  "description": "Cypress Test Automation framework for testing Airways ticket booking",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.14.2"
+  }
+}
