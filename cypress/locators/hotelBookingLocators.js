@@ -9,4 +9,9 @@ hotelbookingfromdatepicker:'span[data-testid=currentCalendarMonthName]',
 hotelbookingtodatepicker:'span[data-testid=nextCalendarMonthName]',
 startSearch:'.SearchBlockstyles__HswSearchCta-sc-e3pqob-2.cbxnLj',
 hotelSortOptions:'.SortingNewUIstyles__FilterName-sc-16hh811-1.ckScTT',
+arrowright:'.ArrowRightIcon-sc-t9vcrx-0.eStYCV',
+arrowleft:'.ArrowLeftIcon-sc-1m17nn5-0.lgNZUr',
+dateselector:'.date_is_selectable_true',
+dateselectorto:'.dcalendar-newstyles__CalenderMonthContainer-sc-1i003by-2.jYCUOo:nth-child(2)>div:nth-child(2)>div>ul:nth-child(2)>li'
+
 }   

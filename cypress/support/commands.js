@@ -20,9 +20,12 @@ Cypress.Commands.add('searchListandclick', (locator, value) => {
         if (breakloopflag == 0) {
             return false
         }
+        cy.log($el.text())
         if ($el.text().includes(value)) {
             breakloopflag = 0;
-            cy.get(locator).eq(index).click({ force: true }).then(function () {
+            cy.wait(2000)
+            cy.log($el.text())
+            cy.get(locator).eq(index).click({force:true}).then(function () {
 
                 return false
             })
@@ -31,7 +34,7 @@ Cypress.Commands.add('searchListandclick', (locator, value) => {
     })
 })
 
-Cypress.Commands.add('fromdatePicker', (locator, date) => {
+Cypress.Commands.add('fromdatePicker', (locator, date,arwright,arwleft,dateselectorfrom,dateselectorto) => {
     const dateobject = new Date(date);
     const targetdate = dateobject.getDate();
     const targetmonth = dateobject.getMonth();
@@ -39,6 +42,7 @@ Cypress.Commands.add('fromdatePicker', (locator, date) => {
     function getCurrentMonthandYear() {
         return cy.get(locator).eq(0).invoke('text').then((value) => {
             const [cuurentMonth, currentYear] = value.split(' ');
+            console.log(value)
             return {
 
                 currentMonth: new Date(Date.parse(`${cuurentMonth} 1, 2024`)).getMonth(),
@@ -49,21 +53,23 @@ Cypress.Commands.add('fromdatePicker', (locator, date) => {
     function navigatetoTargetMonthandYear() {
         getCurrentMonthandYear().then(({ currentMonth, currentYear }) => {
             if (currentYear < targetyear || currentMonth < targetmonth) {
-                cy.get('.ArrowRightIcon-sc-t9vcrx-0.eStYCV').click({ force: true });
+                cy.get(arwright).click({ force: true });
+                cy.wait(1000)
                 navigatetoTargetMonthandYear()
             }
             else if (currentYear > targetyear || currentMonth > targetmonth) {
-                cy.get('.ArrowLeftIcon-sc-1m17nn5-0.lgNZUr').click();
+                cy.get(arwleft).click();
+                cy.wait(1000)
                 navigatetoTargetMonthandYear()
             }
         })
     }
     navigatetoTargetMonthandYear();
-    cy.get('.date_is_selectable_true').each((datepicked, iterate, list) => {
+    cy.get(dateselectorfrom).each((datepicked, iterate, list) => {
         cy.log(datepicked.text());
         cy.log(targetdate);
         if (datepicked.text().includes(targetdate)) {
-            cy.get('.date_is_selectable_true').eq(iterate).click({ force: true }).then(function () {
+            cy.get(dateselectorfrom).eq(iterate).click({ force: true }).then(function () {
                 return false
             })
             return false
@@ -74,7 +80,7 @@ Cypress.Commands.add('fromdatePicker', (locator, date) => {
 
 //To date picker
 
-Cypress.Commands.add('todatePicker', (locator, date) => {
+Cypress.Commands.add('todatePicker', (locator, date,arwright,arwleft,dateselectorfrom,dateselectorto) => {
     const dateobject = new Date(date);
     const targetdate = dateobject.getDate();
     const targetmonth = dateobject.getMonth();
@@ -92,21 +98,23 @@ Cypress.Commands.add('todatePicker', (locator, date) => {
     function navigatetoTargetMonthandYear2() {
         getCurrentMonthandYear().then(({ currentMonth, currentYear }) => {
             if (currentYear < targetyear || currentMonth < targetmonth) {
-                cy.get('.ArrowRightIcon-sc-t9vcrx-0.eStYCV').click({ force: true });
+                cy.get(arwright).click({ force: true });
+                cy.wait(1000)
                 navigatetoTargetMonthandYear2()
             }
             else if (currentYear > targetyear || currentMonth > targetmonth) {
-                cy.get('.ArrowLeftIcon-sc-1m17nn5-0.lgNZUr').click();
+                cy.get(arwleft).click();
+                cy.wait(1000)
                 navigatetoTargetMonthandYear2()
             }
         })
     }
     navigatetoTargetMonthandYear2();
-    cy.get('.date_is_selectable_true').each((datepicked, iterate, list) => {
+    cy.get(dateselectorfrom).each((datepicked, iterate, list) => {
         cy.log(datepicked.text());
         cy.log(targetdate);
         if (datepicked.text().includes(targetdate)) {
-            cy.get('.dcalendar-newstyles__CalenderMonthContainer-sc-1i003by-2.jYCUOo:nth-child(2)>div:nth-child(2)>div>ul:nth-child(2)>li').eq(iterate).click({ force: true }).then(function () {
+            cy.get(dateselectorto).eq(iterate).click({ force: true }).then(function () {
                 return false
             })
             return false

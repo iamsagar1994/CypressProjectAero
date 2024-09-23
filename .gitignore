@@ -22,3 +22,8 @@ Thumbs.db
 dist/
 build/
 coverage/
+
+# Ignore report directories
+reports/
+assets/
+screenshots/

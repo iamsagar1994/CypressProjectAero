@@ -1,16 +1,19 @@
 import { loginpagelocators } from '../locators/loginPagelocators'
 
 class loginPage {
-
-    visitWebPage() {
-        cy.visit('/')
-    }
-    closeSignUp() {
+  visitWebPage() {
+    cy.visit('/')
+  }
+  closeSignUp() {
+    cy.get(loginpagelocators.wholePage).then((body) => {
+      if (body.find(loginpagelocators.popup).length > 0) {
         cy.get(loginpagelocators.signuppopup).click()
-    }
-    verifyText(locator,actualvalue){
-        cy.verifyText(locator,actualvalue)
-    }
+      }
+    })
+  }
+  verifyText(locator, actualvalue) {
+    cy.verifyText(locator, actualvalue)
+  }
 }
 
 

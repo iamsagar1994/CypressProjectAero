@@ -4,12 +4,14 @@
   "description": "Cypress Test Automation framework for testing Airways ticket booking",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "RunAllTests":"cypress run --browser edge --headed"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.14.2"
+    "cypress": "^13.14.2",
+    "mochawesome": "^7.1.3"
   }
 }
