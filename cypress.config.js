@@ -16,6 +16,14 @@ module.exports = defineConfig({
       runMode: 2,
       openMode: 0,
     },
+    reporter: 'mochawesome', // Set the reporter to mochawesome
+    reporterOptions: {
+      reportDir: 'cypress/reports', // Directory where the report will be saved
+      overwrite: false,
+      html: true,
+      json: true,
+      timestamp: 'mmddyyyy_HHMMss' // Customize report name with timestamp
+    },
     chromeWebSecurity: false,
     testIsolation: false
   },

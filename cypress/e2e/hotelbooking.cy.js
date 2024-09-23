@@ -7,6 +7,7 @@ before(()=>{
     cy.fixture('hoteldata').then((data)=>{
         hoteldata=data
     })
+    cy.clearCookies();
 })
     it('Login to Application and verify login is successful', () => {
         loginPages.visitWebPage();

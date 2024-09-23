@@ -12,8 +12,8 @@ class hotelbooking {
     }
     selectBookingDate(fromdate,todate) {
         cy.get(hotelbookinglocators.hotelbookingdatetab).eq(1).click()
-        cy.fromdatePicker(hotelbookinglocators.hotelbookingfromdatepicker, fromdate)
-        cy.todatePicker(hotelbookinglocators.hotelbookingtodatepicker, todate)
+        cy.fromdatePicker(hotelbookinglocators.hotelbookingfromdatepicker, fromdate,hotelbookinglocators.arrowright,hotelbookinglocators.arrowleft,hotelbookinglocators.dateselector,hotelbookinglocators.dateselector)
+        cy.todatePicker(hotelbookinglocators.hotelbookingtodatepicker, todate,hotelbookinglocators.arrowright,hotelbookinglocators.arrowleft,hotelbookinglocators.dateselector,hotelbookinglocators.dateselectorto)
     }
     startHotelSearch() {
         cy.get(hotelbookinglocators.startSearch).click();
